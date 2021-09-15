@@ -1,0 +1,272 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h1 class="facilityheading">Site</h1>
+         
+          <form [formGroup]="SiteForm" (ngSubmit)="ManageLocationType()">
+
+            <input type="hidden" formControlName="TypeId" />
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="Name">Name</label>
+                  <input formControlName="Name" type="text" id="Name" aria-describedby="Name" class="form-control" placeholder="Name">
+                  <div *ngIf="SiteForm.controls['Name'].invalid && (SiteForm.controls['Name'].dirty || SiteForm.controls['Name'].touched)" class="text-danger">
+                    <span *ngIf="SiteForm.controls['Name'].errors?.required">
+                      Name is required.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="Araic_Name">Name (Arabic)</label>
+                  <input formControlName="SiteNameArabic" type="text" id="Araic_Name" aria-describedby="Araic_Name" class="form-control" placeholder="Araic_Name">
+                  <div *ngIf="SiteForm.controls['SiteNameArabic'].invalid && (SiteForm.controls['SiteNameArabic'].dirty || SiteForm.controls['SiteNameArabic'].touched)" class="text-danger">
+                    <span *ngIf="SiteForm.controls['SiteNameArabic'].errors?.required">
+                      SiteNameArabic is required.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="SiteCode">Site Code</label>
+                  <input formControlName="SiteCode" type="text" id="SiteCode" aria-describedby="SiteCode" class="form-control" placeholder="SiteCode">
+                  <div *ngIf="SiteForm.controls['SiteCode'].invalid && (SiteForm.controls['SiteCode'].dirty || SiteForm.controls['SiteCode'].touched)" class="text-danger">
+                    <span *ngIf="SiteForm.controls['SiteCode'].errors?.required">
+                      Site Code is required.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="">Facility</label>
+                  <label class="w-100">
+                    <ng-select formControlName="FacilityId" appearance="outline" [searchable]="false">
+                        <ng-option *ngFor="let item of facilities" [value]="item.id">{{item.name}}
+                        </ng-option>
+                    </ng-select>
+                </label>
+                <div *ngIf="SiteForm.controls['FacilityId'].invalid && (SiteForm.controls['FacilityId'].dirty || SiteForm.controls['FacilityId'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['FacilityId'].errors?.required">
+                    Facility is required.
+                  </span>
+                </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="Address">Address</label>
+                  <input formControlName="Address1" type="text" id="Address" aria-describedby="Address" class="form-control" placeholder="Address">
+                  <div *ngIf="SiteForm.controls['Address1'].invalid && (SiteForm.controls['Address1'].dirty || SiteForm.controls['Address1'].touched)" class="text-danger">
+                    <span *ngIf="SiteForm.controls['Address1'].errors?.required">
+                      Address is required.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="GeomapUrl">Geo Map URL</label>
+                  <input formControlName="GeoMapUrl" type="text" id="GeomapUrl" aria-describedby="GeomapUrl" class="form-control" placeholder="Geo Map Url">
+                  <div *ngIf="SiteForm.controls['GeoMapUrl'].invalid && (SiteForm.controls['GeoMapUrl'].dirty || SiteForm.controls['GeoMapUrl'].touched)" class="text-danger">
+                    <span *ngIf="SiteForm.controls['GeoMapUrl'].errors?.required">
+                      GeoMapUrl is required.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="">Country</label>
+                  <label class="w-100">
+                    <ng-select formControlName="CountryId" appearance="outline" [searchable]="false" (change)="changeCountry($event)">
+                        <ng-option *ngFor="let item of countries" [value]="item.countryId">{{item.name}}</ng-option>
+                    </ng-select>
+                </label>
+                </div>
+                <div *ngIf="SiteForm.controls['CountryId'].invalid && (SiteForm.controls['CountryId'].dirty || SiteForm.controls['CountryId'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['CountryId'].errors?.required">
+                    Country is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="">State</label>
+                  <label class="w-100">
+                    <ng-select formControlName="StateId" appearance="outline" [searchable]="false" (change)="changeState($event)">
+                        <ng-option *ngFor="let item of states" [value]="item.stateId">{{item.name}}
+                        </ng-option>
+                    </ng-select>
+                </label>
+                </div>
+                <div *ngIf="SiteForm.controls['StateId'].invalid && (SiteForm.controls['StateId'].dirty || SiteForm.controls['StateId'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['StateId'].errors?.required">
+                    State is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="">City</label>
+                  <label class="w-100">
+                    <ng-select formControlName="CityId" appearance="outline" [searchable]="false">
+                        <ng-option *ngFor="let item of cities" [value]="item.cityId">{{item.name}}
+                        </ng-option>
+                    </ng-select>
+                </label>
+                </div>
+                <div *ngIf="SiteForm.controls['CityId'].invalid && (SiteForm.controls['CityId'].dirty || SiteForm.controls['CityId'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['CityId'].errors?.required">
+                    City is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="Zip">Zip / Postal Code</label>
+                  <input  formControlName="ZipCode" type="text" id="Zip" aria-describedby="Zip" class="form-control" placeholder="Zip">
+                </div>
+                <div *ngIf="SiteForm.controls['ZipCode'].invalid && (SiteForm.controls['ZipCode'].dirty || SiteForm.controls['ZipCode'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['ZipCode'].errors?.required">
+                    ZipCode is required.
+                  </span>
+                </div>
+              </div>
+     
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="PrimaryPhone">Primary Phone</label>
+                  <input formControlName="Phone1" type="text" id="PrimaryPhone" aria-describedby="PrimaryPhone" class="form-control" placeholder="Primary Phone">
+                </div>
+                <div *ngIf="SiteForm.controls['Phone1'].invalid && (SiteForm.controls['Phone1'].dirty || SiteForm.controls['Phone1'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['Phone1'].errors?.required">
+                    Phone1 is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="SecondaryPhone">Secondary Phone</label>
+                  <input formControlName="Phone2" type="text" id="SecondaryPhone" aria-describedby="SecondaryPhone" class="form-control" placeholder="Secondary Phone">
+                </div>
+                <div *ngIf="SiteForm.controls['Phone2'].invalid && (SiteForm.controls['Phone2'].dirty || SiteForm.controls['Phone2'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['Phone2'].errors?.required">
+                    Phone2 is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="Fax">Fax</label>
+                  <input formControlName="Fax" type="text" id="Fax" aria-describedby="Fax" class="form-control" placeholder="Fax">
+                </div>
+                <div *ngIf="SiteForm.controls['Fax'].invalid && (SiteForm.controls['Fax'].dirty || SiteForm.controls['Fax'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['Fax'].errors?.required">
+                    Fax is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="Email">Email</label>
+                  <input formControlName="Email" type="email" id="Email" aria-describedby="Email" class="form-control" placeholder="Email">
+                </div>
+                <div *ngIf="SiteForm.controls['Email'].invalid && (SiteForm.controls['Email'].dirty || SiteForm.controls['Email'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['Email'].errors?.required">
+                    Email is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="FacilityNo">Facility Number</label>
+                  <input formControlName="SiteNum" type="text" id="FacilityNo" aria-describedby="FacilityNo" class="form-control" placeholder="Facility No.">
+                </div>
+                <div *ngIf="SiteForm.controls['SiteNum'].invalid && (SiteForm.controls['SiteNum'].dirty || SiteForm.controls['SiteNum'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['SiteNum'].errors?.required">
+                    SiteNum is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="">Place Of Service Code</label>
+                  <label class="w-100">
+                    <ng-select formControlName="PlaceOfService" appearance="outline" [searchable]="false">
+                        <ng-option *ngFor="let item of placeofservicescode" [value]="item.value">{{item.label}}
+                        </ng-option>
+                    </ng-select>
+                </label>
+                </div>
+                <div *ngIf="SiteForm.controls['PlaceOfService'].invalid && (SiteForm.controls['PlaceOfService'].dirty || SiteForm.controls['PlaceOfService'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['PlaceOfService'].errors?.required">
+                    PlaceOfService is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <div class="md-form">
+                    <label for="input">Choose Opening Time</label>
+                    <input formControlName="OpeningTime" type="time" id="input" class="form-control" value="01:00" mdbInput/>
+                  </div>
+                  <div *ngIf="SiteForm.controls['OpeningTime'].invalid && (SiteForm.controls['OpeningTime'].dirty || SiteForm.controls['OpeningTime'].touched)" class="text-danger">
+                    <span *ngIf="SiteForm.controls['OpeningTime'].errors?.required">
+                      OpeningTime is required.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <div class="md-form">
+                    <label for="input">Choose Closing Time</label>
+                    <input formControlName="ClosingTime" type="time" id="input1" class="form-control" value="01:00" mdbInput/>
+                  </div>
+                  <div *ngIf="SiteForm.controls['ClosingTime'].invalid && (SiteForm.controls['ClosingTime'].dirty || SiteForm.controls['ClosingTime'].touched)" class="text-danger">
+                    <span *ngIf="SiteForm.controls['ClosingTime'].errors?.required">
+                      ClosingTime is required.
+                    </span>
+                  </div>
+                </div>
+              </div> 
+      
+              <div class="col-12">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="Description">Description</label>
+                  <textarea formControlName="Description" type="text" id="Description" aria-describedby="Description" rows="5" class="form-control" placeholder="Description"></textarea>
+                </div>
+                <div *ngIf="SiteForm.controls['Description'].invalid && (SiteForm.controls['Description'].dirty || SiteForm.controls['Description'].touched)" class="text-danger">
+                  <span *ngIf="SiteForm.controls['Description'].errors?.required">
+                    Description is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="custom-control custom-checkbox mb-4 checkboxleftpadding">
+                  <input formControlName="Active" type="checkbox" class="custom-control-input" id="customCheckThis">
+                  <label class="custom-control-label" for="customCheckThis">
+                    Active
+                    </label>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary float-right" [disabled]="!SiteForm.valid">ADD</button>
+                <a type="btn" routerLink="/app/Control Panel/Provider/Locations/Site" class="btn btn-primary float-right mr-2">Cancel</a>
+              </div>
+             
+            
+            </div>
+          </form>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+

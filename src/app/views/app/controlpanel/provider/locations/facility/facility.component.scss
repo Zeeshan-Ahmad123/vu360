@@ -1,0 +1,110 @@
+.facilityheading{
+    color: black;
+    text-align: center !important;
+    display: block !important;
+    padding-right: 35px;
+}
+.inputlabelclr{
+    color: black;
+}
+.inputlabelclr1{
+	color: white;
+	background-color: #1e2022;
+}
+.inputlabelclrtd{
+    color: white !important;
+}
+.onhoveredit:hover{
+background-color: white;
+color: #38688b ;
+}
+.activeTabColor{
+	color: #fff;
+	background-color: #000000;
+} 
+
+
+
+.page-item:first-child .page-link {
+	margin-left: 0;
+	border-top-left-radius: .25rem;
+	border-bottom-left-radius: .25rem;
+}
+
+.pageColor{
+	position: relative;
+	display: block;
+	padding: 12px;
+	margin-left: -1px;
+	line-height: 1.25;
+	color: white!important;
+	background-color: black!important;
+	border: 1px solid #dee2e6;
+}
+.notAllowed{
+	position: relative;
+	display: block;
+	padding: 12px;
+	margin-left: -1px;
+	line-height: 1.25;
+	color: #007bff;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+	cursor: not-allowed;
+}
+.page-link {
+	position: relative;
+	display: block;
+	padding: 12px;
+	margin-left: -1px;
+	line-height: 1.25;
+	color: #007bff;
+	background-color: #fff;
+	border: 1px solid #dee2e6;
+}
+
+.mr-2{
+	background-color: #38688b;
+	color: white!important;
+	margin: 5px;
+	padding: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.active{
+	background-color: #1e2022;
+	color: white!important;
+	margin: 5px;
+	padding: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+.headActive{
+	color: red;
+}
+.tablewidth{
+	table-layout: fixed;
+}
+.rowpaddingtop{
+	padding-top: 10px;
+}
+.prevbtnsetings{
+	margin-top: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    background: #38688b;
+    color: white;
+}
+.nextbtnsetings{
+	margin-top: 5px;
+    cursor: pointer;
+    background: #38688b;
+    color: white;
+	border-radius: 20px;
+}
+.activebtn{
+	margin-right: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+	border-radius: 5px;
+}

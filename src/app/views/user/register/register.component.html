@@ -1,0 +1,50 @@
+<div class="card auth-card">
+  <div class="position-relative image-side ">
+    <p class="white mb-0 lefttext">
+      Please use the form to register.
+      <br>If you are a member, please
+      <a routerLink="/user/login" class="white white-underline-link">login</a>.
+    </p>
+  </div>
+  <div class="form-side">
+    <div class="row">
+      <div class="col-12 text-center">
+        <a class="c-pointer">
+          <span class="logo-single"></span>
+        </a>
+      </div>
+      <div class="col-12 text-center">
+        <h1 class="mb-4 text-center">Register</h1>
+      </div>
+    </div>
+
+    <form #registerForm="ngForm" novalidate  (ngSubmit)="onSubmit()">
+      <label class="form-group has-float-label">
+        <input class="form-control" required ngModel #displayName="ngModel" name="displayName" placeholder="Full Name"/>
+        <!-- <span>{{ 'user.fullname' | translate }}</span> -->
+        <div *ngIf="!displayName.valid && registerForm.submitted" class="invalid-tooltip">Name is required!</div>
+      </label>
+      <label class="form-group has-float-label">
+        <input class="form-control" required email ngModel #email="ngModel" name="email" placeholder="Email"/>
+        <!-- <span>{{ 'user.email' | translate }}</span> -->
+        <div *ngIf="!email.valid && registerForm.submitted" class="invalid-tooltip">Email is required!</div>
+        <div *ngIf="email?.errors?.email && registerForm.submitted" class="invalid-tooltip">Email must be a valid address!</div>
+      </label>
+      <label class="form-group has-float-label">
+        <input class="form-control" type="password" placeholder="" required ngModel #password="ngModel" name="password" placeholder="Password"/>
+        <!-- <span>{{ 'user.password' | translate }}</span> -->
+        <div *ngIf="!password.valid && registerForm.submitted" class="invalid-tooltip">Password is required!</div>
+      </label>
+      <div class="d-flex justify-content-between align-items-center">
+        <a routerLink="/user/forgot-password" class="textclr1">{{ 'user.forgot-password' | translate }}?</a>
+        <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+          [isDisabled]="buttonDisabled" click="onLoginClick()">
+          {{ 'user.register-button' | translate | uppercase }}
+        </app-state-button>
+
+      </div>
+    </form >
+
+  </div>
+</div>
+<simple-notifications></simple-notifications>

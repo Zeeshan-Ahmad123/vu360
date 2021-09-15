@@ -1,0 +1,125 @@
+
+
+
+<!-- <div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h1 class="facilityheading">Facilities</h1>
+        <div class="col-12">
+          <a type="btn" routerLink="/app/ControlPanel/Provider/Locations/FacilityForm" class="btn btn-primary float-right mb-2">New</a>
+       </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th class="inputlabelclr" scope="col">Facilty Code</th>
+              <th class="inputlabelclr" scope="col">Facilty Name</th>
+              <th class="inputlabelclr" scope="col">Login Reg. Code</th>
+              <th class="inputlabelclr" scope="col">Facilty Description</th>
+              <th class="inputlabelclr" scope="col">Claim License No.</th>
+              <th class="inputlabelclr" scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th class="inputlabelclrtd" scope="row">1</th>
+              <td class="inputlabelclrtd">Mark</td>
+              <td class="inputlabelclrtd">333</td>
+              <td class="inputlabelclrtd">medico</td>
+              <td class="inputlabelclrtd">123</td>
+              <td>
+                <button type="submit" class="btn btn-primary onhoveredit">Edit</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h1 class="facilityheading">Facilities</h1>
+        <div class="col-12">
+          <a type="btn" routerLink="/app/Control Panel/Provider/Locations/FacilityForm" class="btn btn-primary float-right mb-2">New</a>
+       </div>
+        <div class="card-header">
+          <div class="row rowpaddingtop">
+            <div class="col-2 ">
+              Facilities- (Total:{{totalFacilitiesCount}})
+            </div>
+  
+            <div class="col-4 add-row add-row-rel top-paging">
+              <span class="cpp">Facilities per page:</span>
+              <a (click)="setRecPerPage(small)" [ngClass]="smallPageRow? 'active':'mr-2'">{{small}}</a>
+              <a (click)="setRecPerPage(medium)" [ngClass]="mediumPageRow? 'active':'mr-2'">{{medium}}</a>
+              <a (click)="setRecPerPage(large)" [ngClass]="largePageRow? 'active':'mr-2'">{{large}}</a>
+            </div>
+          </div>
+  
+        </div>
+        <table class="table table-striped table-hoverable tablewidth tableheadclr">
+          <thead>
+            <tr>
+              <th class="inputlabelclr1" scope="col">Facilty Code</th>
+              <th class="inputlabelclr1" scope="col">Facilty Name</th>
+              <th class="inputlabelclr1" scope="col">Login Reg. Code</th>
+              <th class="inputlabelclr1" scope="col">Facilty Description</th>
+              <th class="inputlabelclr1" scope="col">Claim License No.</th>
+              <th class="inputlabelclr1 text-center" scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of Facilities">
+              <td class="inputlabelclr" scope="col">{{item.code}}</td>
+              <td class="inputlabelclr" scope="col">{{item.name}}</td>
+              <td class="inputlabelclr" scope="col">{{item.loginRegCode}}</td>
+              <td class="inputlabelclr" scope="col">{{item.description}}</td>
+              <td class="inputlabelclr" scope="col">{{item.claimLicenseNumber}}</td>
+              <td class="inputlabelclr" scope="col" >
+                <button type="submit" class="btn btn-primary onhoveredit mr-1" (click)="Editbuttonclicked(item.id)">Edit</button>
+                <button type="submit" class="btn btn-primary onhoveredit">Delete</button>
+              </td>
+              
+            </tr>
+            <!-- Code by pagination -->
+        
+          <div class="row">
+            <div class="col-3">&nbsp;</div>
+            <div class="col-12">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a (click)="showPrevFacilities()" class="prevbtnsetings"
+                    [ngClass]="(showNoOfCurrentPage ==1)?'notAllowed':'page-link'">Prev
+                  </a>
+                </li>
+                <li *ngFor="let page of pageField;let i=index" class="page-item">
+                  <a class="activebtn" (click)="showFacilitiesByPageNumber(page,i)" [ngClass]="pageNumber[i] ? 'pageColor':'page-link'">{{page}}
+                  </a>
+                  &nbsp;
+                </li>
+                <li class="page-item"><a (click)="showNextFacilities()" class="nextbtnsetings"
+                    [ngClass]="(disabledNextBtn)?'notAllowed':'page-link'">Next
+                  </a>
+                </li>
+              </ul>
+              
+            </div>
+            <div class="col-12">
+              <div style="text-align: center;">
+                Page {{currentPage}} of Total page {{exactPageList}}
+              </div>
+            </div>
+            
+         
+        </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

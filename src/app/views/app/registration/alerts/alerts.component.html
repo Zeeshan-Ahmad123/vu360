@@ -1,0 +1,209 @@
+<div class="row">
+    <div class="col-12">
+        <app-heading></app-heading>
+        <app-breadcrumb></app-breadcrumb>
+        <div class="separator mb-5"></div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-12 text-center">
+                <h1 class="demoheading mb-3">Alerts</h1>
+            </div>
+
+            <form [formGroup]="Alertsform" class="mb-5" (ngSubmit)="ManageAlerts()">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="">Type </label>
+                            <label class="w-100">
+                              <ng-select formControlName="Type" appearance="outline" [searchable]="false" placeholder="Select Type">
+                                  <ng-option *ngFor="let item of types" [value]="item.value">{{item.label}}
+                                  </ng-option>
+                              </ng-select>
+                              <div *ngIf="Alertsform.controls['Type'].invalid && (Alertsform.controls['Type'].dirty || Alertsform.controls['Type'].touched)" class="text-danger">
+                                <span *ngIf="Alertsform.controls['Type'].errors?.required">
+                                    Type is required.
+                                </span>
+                              </div> 
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label>Repeat Date</label>
+                            <input  formControlName="Date" type="text" placeholder="Select Date" class="form-control"
+                            bsDatepicker [container]="'html'" [bsConfig]="{ adaptivePosition: true, dateInputFormat: 'DD-MM-YYYY' }">
+                            <div *ngIf="Alertsform.controls['Date'].invalid && (Alertsform.controls['Date'].dirty || Alertsform.controls['Date'].touched)" class="text-danger">
+                                <span *ngIf="Alertsform.controls['Date'].errors?.required">
+                                    Date is required.
+                                </span>
+                              </div> 
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="">Message</label>
+                            <textarea formControlName="Message" type="text" id="" aria-describedby="" rows="5" class="form-control" placeholder="Message"></textarea>
+                            <div *ngIf="Alertsform.controls['Message'].invalid && (Alertsform.controls['Message'].dirty || Alertsform.controls['Message'].touched)" class="text-danger">
+                                <span *ngIf="Alertsform.controls['Message'].errors?.required">
+                                    Message is required.
+                                </span>
+                              </div> 
+
+                          </div>
+                    </div>
+                    
+            
+                
+                <div class="separator"></div>
+
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                          <label class="inputlabelclr" for="">Updated By</label>
+                          <input formControlName="" disabled type="text" id="" aria-describedby="" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                            <label>Updated Date</label>
+                            <input  formControlName="" disabled  type="text" placeholder="Selct Date" class="form-control"
+                            bsDatepicker [container]="'html'" [bsConfig]="{ adaptivePosition: true, dateInputFormat: 'DD-MM-YYYY' }">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                          <label class="inputlabelclr" for="">Entered By</label>
+                          <input formControlName="" disabled type="text" id="" aria-describedby="" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                          <label class="inputlabelclr" for="">Entered Date</label>
+                          <input formControlName="" disabled type="text" id="" aria-describedby="" class="form-control" placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                          <label class="inputlabelclr" for="">Finished</label>
+                          <input formControlName="" disabled type="text" id="" aria-describedby="" class="form-control" placeholder="">
+                        </div>
+</div>
+                    <div class="col-12 col-lg-12">
+                        <button type="submit"  class="btn btn-primary ml-1 float-right" >Save</button>
+                        <a type="btn"  class="btn btn-primary ml-1 float-right">Cancel</a>
+                        <a type="btn"  class="btn btn-primary ml-1 float-right">Clear</a>
+                    </div>
+                    
+            </div>
+            </form>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-12 col-lg-12">
+       <div class="card mb-4">
+            <div class="card-body">
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-4">
+                        <div class="custom-control custom-checkbox mb-4 checkboxleftpadding mt-2 ml-2">
+                            <input type="checkbox" class="custom-control-input" id="checkboxForAll">
+                            <label  class="custom-control-label" for="checkboxForAll">
+                              Check All
+                              </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-12">
+                        <table class="table table-hover table-striped">
+                            <thead class="tableheadclr">
+                            <tr>
+                                <th class="" scope="col">Alert Message</th>
+                                <th class="" scope="col">Alert Type</th>
+                                <th class="" scope="col">Status</th>
+                                <th class="" scope="col">Comments</th>
+                                <th class="" scope="col">Repeat Date</th>
+                                <th class="" scope="col">Finished</th>
+                                <th class="" scope="col">Entered By</th>
+                                <th class="" scope="col">Entered Date</th>
+                                <th class="" scope="col">Updated By</th>
+                                <th class="" scope="col">Updated Date</th>
+                                <th class=" " scope="col">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="" scope="col">
+                                    <div class="custom-control custom-checkbox mb-4 checkboxleftpadding mt-3">
+                                        <input type="checkbox" class="custom-control-input" id="customCheckThis11">
+                                        <label  class="custom-control-label" for="customCheckThis11">
+                                          Testing Alert
+                                          </label>
+                                    </div>
+                                </td>
+                                <td class="" scope="col">Medical</td>
+                                <td class="" scope="col">Not Completed</td>
+                                <td class="" scope="col"></td>
+                                <td class="" scope="col">05/08/2021</td>
+                                <td class="" scope="col">No</td>
+                                <td class="" scope="col">Admin</td>
+                                <td class="" scope="col">04/08/2021</td>
+                                <td class="" scope="col"></td>
+                                <td class="" scope="col"></td>
+                                <td class="" scope="col" >
+                                <button type="submit" class="btn btn-primary onhoveredit mr-1">Edit</button>
+                                <button type="submit" class="btn btn-primary onhoveredit">Delete</button>
+                                </td>
+                                
+                            </tr>
+
+                            <tr>
+                                <td class="" scope="col">
+                                    <div class="custom-control custom-checkbox mb-4 checkboxleftpadding mt-3">
+                                        <input type="checkbox" class="custom-control-input" id="customCheckThis12">
+                                        <label  class="custom-control-label" for="customCheckThis12">
+                                          Testing Alert
+                                          </label>
+                                    </div>
+                                </td>
+                                <td class="" scope="col">Medical</td>
+                                <td class="" scope="col">Not Completed</td>
+                                <td class="" scope="col"></td>
+                                <td class="" scope="col">05/08/2021</td>
+                                <td class="" scope="col">No</td>
+                                <td class="" scope="col">Admin</td>
+                                <td class="" scope="col">04/08/2021</td>
+                                <td class="" scope="col"></td>
+                                <td class="" scope="col"></td>
+                                <td class="" scope="col" >
+                                <button type="submit" class="btn btn-primary onhoveredit mr-1">Edit</button>
+                                <button type="submit" class="btn btn-primary onhoveredit">Delete</button>
+                                </td>
+                                
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="separator mb-5"></div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <a type="btn" class="btn btn-primary float-right mr-1">Mark Completed</a>
+                        <a type="btn" class="btn btn-primary float-right mr-1">Remove ReOccurrence</a>
+                        <a type="btn" class="btn btn-primary float-right mr-1">Assign Alert</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

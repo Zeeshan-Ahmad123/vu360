@@ -1,0 +1,363 @@
+
+<div class="row">
+  <div class="col-12">
+      <!-- <app-heading></app-heading> -->
+      <h1>Temporary Patient Demographics</h1>
+      <app-breadcrumb></app-breadcrumb>
+      <div class="separator mb-5"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-body">
+          <div class="col-12 text-center">
+              <h1 class="demoheading">Temporary Patient Demographics Form</h1>
+          </div>
+          <form [formGroup]="tempPatientDemographicForm" (ngSubmit)="ManageTemporaryPatientDemographic()">
+            <input type="hidden" formControlName="TempId" />
+              <div class="row">
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="">Temporary Patient ID</label>
+                        <input  type="text" id="" aria-describedby="" class="form-control" placeholder="Enter Patient ID">
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="">Title</label>
+                        <label class="w-100">
+                          <ng-select formControlName="PersonTitleId"  appearance="outline" [searchable]="false" placeholder="Select Title">
+                              <ng-option *ngFor="let item of titles" [value]="item.titleId">{{item.title}}
+                              </ng-option>
+                          </ng-select>
+                      </label>
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="First_Name">First Name</label>
+                        <input formControlName="PersonFirstName" type="text" id="First_Name" aria-describedby="First_Name" class="form-control" placeholder="First Name">
+                        <div *ngIf="tempPatientDemographicForm.controls['PersonFirstName'].invalid && (tempPatientDemographicForm.controls['PersonFirstName'].dirty || tempPatientDemographicForm.controls['PersonFirstName'].touched)" class="text-danger">
+                          <span *ngIf="tempPatientDemographicForm.controls['PersonFirstName'].errors?.required">
+                            First_Name is required.
+                          </span>
+                        </div> 
+                      </div>
+                      
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="Middle_Name">Middle Name</label>
+                        <input formControlName="PersonMiddleName" type="text" id="Middle_Name" aria-describedby="Middle_Name" class="form-control" placeholder="Middle Name">
+                        <div *ngIf="tempPatientDemographicForm.controls['PersonMiddleName'].invalid && (tempPatientDemographicForm.controls['PersonMiddleName'].dirty || tempPatientDemographicForm.controls['PersonMiddleName'].touched)" class="text-danger">
+                          <span *ngIf="tempPatientDemographicForm.controls['PersonMiddleName'].errors?.required">
+                            Middle_Name is required.
+                          </span>
+                        </div>
+                      </div>
+                      
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="Last_Name">Last Name</label>
+                        <input formControlName="PersonLastName" type="text" id="Last_Name" aria-describedby="Last_Name" class="form-control" placeholder="Last Name">
+                        <div *ngIf="tempPatientDemographicForm.controls['PersonLastName'].invalid && (tempPatientDemographicForm.controls['PersonLastName'].dirty || tempPatientDemographicForm.controls['PersonLastName'].touched)" class="text-danger">
+                          <span *ngIf="tempPatientDemographicForm.controls['PersonLastName'].errors?.required">
+                            Last_Name is required.
+                          </span>
+                        </div>
+                      </div>
+                      
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                      <label class="inputlabelclr" for="email">Email</label>
+                      <input formControlName="PersonEmail" type="email" id="email" aria-describedby="email" class="form-control" placeholder="Email">
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="">Gender</label>
+                        <label class="w-100">
+                          <ng-select formControlName="PersonSex" appearance="outline" [searchable]="false" placeholder="Select Gender">
+                              <ng-option *ngFor="let item of genders" [value]="item.gender">{{item.gender}}
+                              </ng-option>
+                          </ng-select>
+                          <div *ngIf="tempPatientDemographicForm.controls['PersonSex'].invalid && (tempPatientDemographicForm.controls['PersonSex'].dirty || tempPatientDemographicForm.controls['PersonSex'].touched)" class="text-danger">
+                            <span *ngIf="tempPatientDemographicForm.controls['PersonSex'].errors?.required">
+                              Gender is required.
+                            </span>
+                          </div>
+                      </label>
+                      </div>
+                  </div>        
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                          <label>Date of Birth</label>
+                          <input  formControlName="PatientBirthDate" type="text" placeholder="Datepicker" class="form-control"
+                          bsDatepicker [container]="'html'" [bsConfig]="{ adaptivePosition: true, dateInputFormat: 'DD-MM-YYYY' }">
+                      </div>
+                      <div *ngIf="tempPatientDemographicForm.controls['PatientBirthDate'].invalid && (tempPatientDemographicForm.controls['PatientBirthDate'].dirty || tempPatientDemographicForm.controls['PatientBirthDate'].touched)" class="text-danger">
+                        <span *ngIf="tempPatientDemographicForm.controls['PatientBirthDate'].errors?.required">
+                          Date of Birth is required.
+                        </span>
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                      <label class="inputlabelclr" for="age">Age</label>
+                      <input formControlName="PersonAge" type="text" id="Age" aria-describedby="Age" class="form-control" placeholder="Age">
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="HomePhone">Home Phone</label>
+                        <input formControlName="PersonHomePhone1" type="text" id="HomePhone" aria-describedby="HomePhone" class="form-control" placeholder="Home Phone">
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="WorkPhone">Work Phone</label>
+                        <input formControlName="PersonWorkPhone1" type="text" id="WorkPhone" aria-describedby="WorkPhone" class="form-control" placeholder="Work Phone">
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="CellPhone">Cell Phone</label>
+                        <input formControlName="PersonCellPhone" type="text" id="CellPhone" aria-describedby="CellPhone" class="form-control" placeholder="Cell Phone">
+                      </div>
+                      <div *ngIf="tempPatientDemographicForm.controls['PersonCellPhone'].invalid && (tempPatientDemographicForm.controls['PersonCellPhone'].dirty || tempPatientDemographicForm.controls['PersonCellPhone'].touched)" class="text-danger">
+                        <span *ngIf="tempPatientDemographicForm.controls['PersonCellPhone'].errors?.required">
+                          Cell Phone is required.
+                        </span>
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="DwellingNo">Dwelling Number</label>
+                        <input formControlName="PersonAddress2" type="text" id="DwellingNo" aria-describedby="DwellingNo" class="form-control" placeholder="Dwelling Number">
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-9">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="StreetName">Street Name</label>
+                        <input formControlName="PersonAddress1" type="text" id="StreetName" aria-describedby="StreetName" class="form-control" placeholder="Street Name">
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="PostalCode">Zip / Postal Code</label>
+                        <input formControlName="PersonZipCode" type="text" id="PostalCode" aria-describedby="PostalCode" class="form-control" placeholder="Postal Code">
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="">Country</label>
+                        <label class="w-100">
+                          <ng-select formControlName="PersonCountryId" appearance="outline" [searchable]="false" (change)="changeCountry($event)" placeholder="Select Country">
+                              <ng-option *ngFor="let item of countries"  [value]="item.countryId">{{item.name}}
+                              </ng-option>
+                          </ng-select>
+                      </label>
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="">State / Emirate</label>
+                        <label class="w-100">
+                          <ng-select formControlName="PersonStateId" appearance="outline" [searchable]="false" (change)="changeState($event)" placeholder="Select State/Emirate">
+                              <ng-option *ngFor="let item of states" [value]="item.stateId">{{item.name}}
+                              </ng-option>
+                          </ng-select>
+                      </label>
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="">City / Location</label>
+                        <label class="w-100">
+                          <ng-select formControlName="PersonCityId" appearance="outline" [searchable]="false"  placeholder="Select City/Location">
+                              <ng-option *ngFor="let item of cities" [value]="item.cityId">{{item.name}}
+                              </ng-option>
+                          </ng-select>
+                      </label>
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-3">
+                      <div class="form-group">
+                        <label class="inputlabelclr" for="">Nationality</label>
+                        <label class="w-100">
+                          <ng-select formControlName="Nationality" appearance="outline" [searchable]="false" placeholder="Select Nationality">
+                              <ng-option *ngFor="let item of countries"  [value]="item.countryId">{{item.name}}
+                              </ng-option>
+                          </ng-select>
+                      </label>
+                      </div>
+                  </div>
+              </div>
+              <div class="separator mb-5"></div>
+              <div class="row moreinforow">
+                  <div class="col-12 col-lg-12">
+                      <h1 class="text-center">Additional Information</h1>
+                      <div>
+                          <tabset class="textclr">
+                              <tab  heading="Next of Kin" id="tab1">
+                                  <div class="row" style="margin-top: 20px;">
+                                      <div class="col-12 col-lg-3">
+                                          <div class="form-group">
+                                              <label class="inputlabelclr" for="">Relationship</label>
+                                              <label class="w-100">
+                                              <ng-select formControlName="NokrelationshipId" appearance="outline" [searchable]="false" placeholder="Select Relationship">
+                                                  <ng-option *ngFor="let item of relationships" [value]="item.id">{{item.name}}
+                                                  </ng-option>
+                                              </ng-select>
+                                              </label>
+                                          </div>
+                                      </div>
+                                      <div class="col-12 col-lg-3">
+                                          <div class="form-group">
+                                            <label class="inputlabelclr" for="First_Name">First Name</label>
+                                            <input formControlName="NokfirstName" required type="text" id="First_Name" aria-describedby="First_Name" class="form-control" placeholder="First Name" >
+                                          </div> 
+                                      </div>
+                                      <div class="col-12 col-lg-3"> 
+                                          <div class="form-group">
+                                            <label class="inputlabelclr" for="Middle_Name">Middle Name</label>
+                                            <input formControlName="NokmiddleName" type="text" id="Middle_Name" aria-describedby="Middle_Name" class="form-control" placeholder="Middle Name">
+                                          </div>
+                                      </div>
+                                      <div class="col-12 col-lg-3">
+                                          <div class="form-group">
+                                            <label class="inputlabelclr" for="Last_Name">Last Name</label>
+                                            <input formControlName="NoklastName" type="text" id="Last_Name" aria-describedby="Last_Name" class="form-control" placeholder="Last Name">
+                                          </div>
+                                      </div>
+                                      <div class="col-12 col-lg-6">
+                                        <div class="form-group">
+                                          <label class="inputlabelclr" for="StreetName">Street Name</label>
+                                          <input formControlName="Nokaddress1"  type="text" id="StreetName" aria-describedby="StreetName" class="form-control" placeholder="Street Name">
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-lg-3">
+                                        <div class="form-group">
+                                          <label class="inputlabelclr" for="DwellingNo">Dwelling Number</label>
+                                          <input formControlName="Nokaddress2" type="text" id="DwellingNo" aria-describedby="DwellingNo" class="form-control" placeholder="Dwelling Number">
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-lg-3">
+                                          <div class="form-group">
+                                            <label class="inputlabelclr" for="PostalCode">Postal Code</label>
+                                            <input formControlName="NokzipCode" type="text" id="PostalCode" aria-describedby="PostalCode" class="form-control" placeholder="Postal Code">
+                                          </div>
+                                        </div>
+                                      <div class="col-12 col-lg-3">
+                                        <div class="form-group">
+                                          <label class="inputlabelclr" for="">Country</label>
+                                          <label class="w-100">
+                                            <ng-select formControlName="NokcountryId" appearance="outline" [searchable]="false" (change)="changeCountry($event)" placeholder="Select Country">
+                                                <ng-option *ngFor="let item of countries"  [value]="item.countryId">{{item.name}}
+                                                </ng-option>
+                                            </ng-select>
+                                        </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-lg-3">
+                                        <div class="form-group">
+                                          <label class="inputlabelclr" for="">State / Emirate</label>
+                                          <label class="w-100">
+                                            <ng-select formControlName="NokstateId" appearance="outline" [searchable]="false" (change)="changeState($event)" placeholder="Select State/Emirate">
+                                                <ng-option *ngFor="let item of states" [value]="item.stateId">{{item.name}}
+                                                </ng-option>
+                                            </ng-select>
+                                        </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-lg-3">
+                                        <div class="form-group">
+                                          <label class="inputlabelclr" for="">City</label>
+                                          <label class="w-100">
+                                            <ng-select formControlName="NokcityId" appearance="outline" [searchable]="false" placeholder="Select City">
+                                                <ng-option *ngFor="let item of cities" [value]="item.cityId">{{item.name}}
+                                                </ng-option>
+                                            </ng-select>
+                                        </label>
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-lg-3">
+                                        <div class="form-group">
+                                          <label class="inputlabelclr" for="HomePhone">Home Phone</label>
+                                          <input formControlName="NokhomePhone" type="text" id="HomePhone" aria-describedby="HomePhone" class="form-control" placeholder="Home Phone">
+                                        </div>
+                                      </div>
+                                      <div class="col-12 col-lg-3">
+                                        <div class="form-group">
+                                          <label class="inputlabelclr" for="CellPhone">Cell Phone</label>
+                                          <input formControlName="NokcellNo" type="text" id="CellPhone" aria-describedby="CellPhone" class="form-control" placeholder="Cell Phone">
+                                        </div>
+                                      </div>
+                                  </div>
+                              </tab>
+                              <tab heading="Comments">
+                                  <div class="row morerow" style="margin-top: 20px;">
+                                      <div class="col-12 col-lg-12">
+                                          <table class="table table-hover table-bordered">
+                                              <thead>
+                                                  <tr>
+                                                      <th>INSURANCE CARRIER</th>
+                                                      <th>POLICY NAME</th>
+                                                      <th>INSURED ID / EMP ID</th>
+                                                      <th>DEDUCTIBLE</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <tr>
+                                                      <td>abc</td>
+                                                      <td>demo</td>
+                                                      <td>123</td>
+                                                      <td>demo</td>
+                                                  </tr>
+                                              </tbody>
+                                          </table>
+                                      </div>
+                                  </div>
+                              </tab>
+                         
+                          </tabset>
+                      </div>
+                  </div>
+              </div>
+              <div class="row mt-5">
+                  <div class="col-12 col-lg-12">
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-12 col-lg-6">
+                      <div class="row">
+                          <div class="col-lg-6">
+                              <label class="inputlabelclr" for="CreatedBy">Created By: </label>
+                              <input formControlName="CreatedBy" type="text" id="CreatedBy" aria-describedby="CreatedBy" class="form-control" placeholder="Created By">
+                              <label class="inputlabelclr" for="UpdatedBy">Updated By:</label>
+                              <input formControlName="UpdatedBy" type="text" id="UpdatedBy" aria-describedby="UpdatedBy" class="form-control" placeholder="Updated By">
+                          </div>
+                          <div class="col-lg-6">
+                              <label class="inputlabelclr" for="CreatedDate">Created Date: </label>
+                              <input formControlName="CreatedDate" type="text" id="CreatedDate" aria-describedby="CreatedDate" class="form-control" placeholder="Created Date">
+                              <label class="inputlabelclr" for="UpdatedDate">Updated Date:</label>
+                              <input formControlName="UpdatedDate" type="text" id="UpdatedDate" aria-describedby="UpdatedDate" class="form-control" placeholder="Updated Date">
+
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-12 col-lg-6">
+                      <button type="submit" class="btn btn-primary float-right mr-2 bottombtns">Save</button>
+                      <a type="btn" class="btn btn-primary float-right mr-2 bottombtns">Cancel</a>
+                      <a type="btn" class="btn btn-primary float-right mr-2 bottombtns">Clear</a>
+                      <a type="btn" class="btn btn-primary float-right mr-2 bottombtns">Make Payment</a>
+                  </div>
+              </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>

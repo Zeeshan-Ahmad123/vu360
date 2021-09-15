@@ -1,0 +1,329 @@
+<div class="row">
+    <div class="col-12">
+        <app-heading></app-heading>
+        <app-breadcrumb></app-breadcrumb>
+        <div class="separator mb-5"></div>
+    </div>
+</div>
+
+
+<!-- <div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-12 text-center">
+            </div>
+           
+            <div class="row">
+                <div class="col-1">
+                    <label class="lbltext">MR No.</label>
+                </div>
+                <div class="col-5">
+                    <form>
+                        <div id="displayOptions" class="collapse dont-collapse-sm in show" aria-expanded="true" aria-hidden="false" style="display: block;">
+                            <div class="d-inline-block ng-star-inserted">
+                                <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
+                                    <input placeholder="Search" class="form-control textclr">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-12 col-lg-6"></div>
+            </div>
+
+            <div class="separator mb-5"></div>
+
+            <form>
+                <div class="form-group row">
+                    <div class="col-12">
+                        <h2>Muhammad Zabair</h2>
+                    </div>
+                    <label for="" class="col-sm-2 col-form-label labelmrsearch">Payer:</label>
+                    <div class="col-sm-2">
+                        <label for="" class="col-form-label">Agha Khan Hospital</label>
+                    </div>
+
+                    <label for="" class="col-sm-2 col-form-label labelmrsearch">Gender:</label>
+                    <div class="col-sm-2">
+                        <label for="" class="col-form-label">Male</label>
+                    </div>
+
+                    <label for="" class="col-sm-2 col-form-label labelmrsearch">Cell Phone:</label>
+                    <div class="col-sm-2">
+                        <label for="" class="col-form-label">123456789</label>
+                    </div>
+
+                    <label for="" class="col-sm-2 col-form-label labelmrsearch">Plan:</label>
+                    <div class="col-sm-2">
+                        <label for="" class="col-form-label">koi nahi</label>
+                    </div>
+
+                    <label for="" class="col-sm-2 col-form-label labelmrsearch">DOB:</label>
+                    <div class="col-sm-2">
+                        <label for="" class="col-form-label">01-02-1990</label>
+                    </div>
+
+                    <label for="" class="col-sm-2 col-form-label labelmrsearch">Home Phone:</label>
+                    <div class="col-sm-2">
+                        <label for="" class="col-form-label">987654321</label>
+                    </div>
+
+                    <label for="" class="col-sm-2 col-form-label labelmrsearch">Member Id:</label>
+                    <div class="col-sm-2">
+                        <label for="" class="col-form-label">1200</label>
+                    </div>
+
+                    <label for="" class="col-sm-2 col-form-label labelmrsearch">Age:</label>
+                    <div class="col-sm-2">
+                        <label for="" class="col-form-label">30</label>
+                    </div>
+
+                    <label for="" class="col-sm-2 col-form-label labelmrsearch">Work Phone:</label>
+                    <div class="col-sm-2">
+                        <label for="" class="col-form-label">2222222222</label>
+                    </div>
+
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-12">
+                        <a type="btn" class="btn btn-primary float-right mr-5 bottombtns">Family</a>
+                        <a type="btn" class="btn btn-primary float-right mr-2 bottombtns">Alert</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+      </div>
+    </div>
+</div>  -->
+
+<div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-12 text-center">
+                <h1 class="demoheading mb-3">Subscriber Information</h1>
+            </div>
+            <form [formGroup]="Subcriberform" (ngSubmit)="ManageSubscriber()">
+                <div class="row">
+                    <div class="col-12 col-lg-3">
+                  <!-- <input type="hidden" formControlName="SubscriberId" />  -->
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="">Type </label>
+                            <label class="w-100">
+                              <ng-select  appearance="outline" [searchable]="false" placeholder="Select Type">
+                                  <ng-option *ngFor="let item of types" [value]="item.value">{{item.label}}
+                                  </ng-option>
+                              </ng-select>
+                          </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="LastName">Last Name</label>
+                            <input  formControlName="LastName" type="text" id="LastName" aria-describedby="LastName" class="form-control" placeholder="Last Name">
+                          </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="InsuranceIdNo">Insurance ID No.</label>
+                            <input  formControlName="InsuredIdno" type="text" id="InsuranceIdNo" aria-describedby="InsuranceIdNo" class="form-control" placeholder="Insurance ID No.">
+                          </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <button type="submit" class="btn btn-primary float-left searchbtn">Search</button>
+                    </div>
+                </div>
+            </form>
+           
+            <div class="row">
+                <div class="col-12 col-lg-12">
+                    <a type="btn" routerLink="/app/Registration/Subscriber" class="btn btn-primary float-right">New Subscriber</a>
+                </div>
+            </div>
+
+            <div class="card-header">
+                <div class="row rowpaddingtop">
+                  <div class="col-2 ">
+                    Subscribers- (Total:{{this.ps.totalitemsCount}})
+                  </div>
+        
+                  <div class="col-4 add-row add-row-rel top-paging">
+                    <span class="cpp">Subscribers per page:</span>
+                    <a (click)="setRecPerPage(this.ps.small)" [ngClass]="this.ps.smallPageRow? 'active':'mr-2'">{{this.ps.small}}</a>
+                    <a (click)="setRecPerPage(this.ps.medium)" [ngClass]="this.ps.mediumPageRow? 'active':'mr-2'">{{this.ps.medium}}</a>
+                    <a (click)="setRecPerPage(this.ps.large)" [ngClass]="this.ps.largePageRow? 'active':'mr-2'">{{this.ps.large}}</a>
+                  </div>
+                </div>
+        
+              </div>
+
+            <div class="row mt-4">
+                <div class="col-12 col-lg-12">
+                    <table class="table table-hover table-striped">
+                        <thead class="tableheadclr">
+                          <tr>
+                            <th class="" scope="col">Type</th>
+                            <th class="" scope="col">Subscriber Name</th>
+                            <th class="" scope="col">Insurance Carrier</th>
+                            <th class="" scope="col">Insurance ID No.</th>
+                            <th class="" scope="col">Carrier Address</th>
+                            <th class="" scope="col">Active</th>
+                            <th class=" " scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of SubcriberList" (click)="setClickedRow(item.subscriberId)">
+                            <td class="" scope="col">Waqas</td>
+                            <td class="" scope="col">{{item.firstName}}{{item.middleName}}{{item.lastName}}</td>
+                            <td class="" scope="col">{{item.insuredCarrier}}</td>
+                            <td class="" scope="col">{{item.insuredIdno}}</td>
+                            <td class="" scope="col">{{item.address1}}</td>
+                            <div *ngIf="item.inactive==true">
+                                <td class="inputlabelclr" scope="col">Yes</td>
+                            </div>
+                              <div *ngIf="item.inactive==false">
+                                <td class="inputlabelclr" scope="col">No</td>
+                            </div>
+                            <td class="" scope="col">
+                                <button type="submit" class="btn btn-primary onhoveredit mr-1" (click)="Editbuttonclicked(item.subscriberId)">Edit</button>
+                                <button type="submit" class="btn btn-primary onhoveredit">Delete</button>
+                            </td>   
+                          </tr>
+                          <div class="row">
+                            <div class="col-3">&nbsp;</div>
+                            <div class="col-12">
+                              <ul class="pagination">
+                                <li class="page-item">
+                                  <a (click)="showPrevSubscribers()" class="prevbtnsetings"
+                                    [ngClass]="(this.ps.showNoOfCurrentPage ==1)?'notAllowed':'page-link'">Prev
+                                  </a>
+                                </li>
+                                <li *ngFor="let page of this.ps.pageField;let i=index" class="page-item">
+                                  <a class="activebtn" (click)="showSubscribersByPageNumber(page,i)" [ngClass]="this.ps.pageNumber[i] ? 'pageColor':'page-link'">{{page}}
+                                  </a>
+                                  &nbsp;
+                                </li>
+                                <li class="page-item"><a (click)="showNextSubscribers()" class="nextbtnsetings"
+                                    [ngClass]="(this.ps.disabledNextBtn)?'notAllowed':'page-link'">Next
+                                  </a>
+                                </li>
+                              </ul>
+                              
+                            </div>
+                            <div class="col-12">
+                              <div style="text-align: center;">
+                                Page {{this.ps.currentPage}} of Total page {{this.ps.exactPageList}}
+                              </div>
+                            </div>
+                
+                          </div>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+            <div class="separator mb-5"></div>
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <p class="float-left"></p>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <a type="submit" (click)="AddToCoverage()" class="btn btn-primary float-right" >Add to Coverages</a>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-12 text-center">
+                <h1 class="demoheading mb-3">Insurance Coverage</h1>
+            </div>
+            <form [formGroup]="InsurencsCoverageform">
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <div class="form-group float-right">
+                            <label class="inputlabelclr" for="">Patient's Relationship with Subscriber </label>
+                            <label class="w-100">
+                              <ng-select  formControlName="Relationship" class="" appearance="outline" [searchable]="false" placeholder="Select Type">
+                                  <ng-option *ngFor="let relationship of relationshipswithsubscriber" [value]="relationship.relation">{{relationship.relation}}
+                                  </ng-option>
+                              </ng-select>
+                          </label>
+                          </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="row mt-4">
+                <div class="col-12 col-lg-12">
+                    <table class="table table-hover table-striped">
+                        <thead class="tableheadclr">
+                          <tr>
+                            <th class="" scope="col">Type</th>
+                            <th class="" scope="col">Subscriber Name</th>
+                            <th class="" scope="col">Insurance Carrier</th>
+                            <th class="" scope="col">Termination Date</th>
+                            <th class="" scope="col">Insurance ID No.</th>
+                            <th class="" scope="col">Relationship</th>
+                            <th class="" scope="col">Carrier Address</th>
+                            <th class="" scope="col">Priority</th>
+                            <th class="" scope="col">Active</th>
+                            <th class=" " scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let item1 of list">
+                            <td class="" scope="col">Waqas</td>
+                            <td class="" scope="col">{{item1.firstName}}{{item1.middleName}}{{item1.lastName}}</td>
+                            <td class="" scope="col">{{item1.insuredCarrier}}</td>
+                            <td class="" scope="col">{{item1.terminationDate}}</td>
+                            <td class="" scope="col">{{item1.insuredIdno}}</td>
+                            <td class="" *ngFor="let relationship of relationshipswithsubscriber" scope="col">{{relationship.relation}}</td>
+                            <td class="" scope="col">{{item1.address1}}</td>
+                            <td class="" scope="col">Priority</td>
+                            <div *ngIf="item1.inactive==true">
+                                <td class="inputlabelclr" scope="col">Yes</td>
+                            </div>
+                              <div *ngIf="item1.inactive==false">
+                                <td class="inputlabelclr" scope="col">No</td>
+                            </div>
+                            <td class="" scope="col">
+                                <button type="submit" class="btn btn-primary onhoveredit mr-1">Edit</button>
+                                <button type="submit" class="btn btn-primary onhoveredit">Delete</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                       
+                      </table>
+                </div>
+            </div>
+
+            <div class="separator mb-5"></div>
+
+            <div class="row">
+                <div class="col-12 col-lg-3">
+                    <a type="btn" class="btn btn-primary float-left">Save</a>
+                </div>
+                <div class="col-12 col-lg-6 text-center">
+                    <a type="btn" class="btn btn-primary mr-1">Print</a>
+                    <a type="btn" class="btn btn-primary mr-1">Referesh</a>
+                    <a type="btn" class="btn btn-primary">Reset</a>
+                </div>
+                <div class="col-12 col-lg-3">
+                    <a type="btn" class="btn btn-primary float-right">Eligibility</a>
+                </div>
+            </div>
+
+        </div>
+      </div>
+    </div>
+</div>  

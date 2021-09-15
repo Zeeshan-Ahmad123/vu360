@@ -1,0 +1,94 @@
+<div class="row">
+    <div class="col-12">
+        <!-- <app-heading></app-heading> -->
+        <h1>Encounters</h1>
+        <app-breadcrumb></app-breadcrumb>
+        <div class="separator mb-5"></div>
+    </div>
+  </div>
+
+
+<div class="row">
+    <div class="col-12 col-lg-12">
+       <div class="card mb-4">
+            <div class="card-body">
+
+                <form class="mb-5">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h1 class="demoheading mb-3">Alerts</h1>
+                        </div>
+                        <div class="col-12 col-lg-6">
+                            <div class="form-group">
+                                <label class="inputlabelclr" for="">Facility </label>
+                                <label class="w-100">
+                                  <ng-select formControlName="" appearance="outline" [searchable]="false" placeholder="Select Facility">
+                                      <ng-option *ngFor="let item of facilities" [value]="item.value">{{item.label}}
+                                      </ng-option>
+                                  </ng-select>
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+    
+                </form>
+
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-12">
+                        <table class="table table-hover table-striped">
+                            <thead class="tableheadclr">
+                            <tr>
+                                <th class="" scope="col">Visit Date</th>
+                                <th class="" scope="col">Purpose of Visit</th>
+                                <th class="" scope="col">Provider</th>
+                                <th class="" scope="col">Visit Account No.</th>
+                                <th class="" scope="col">Checked In By</th>
+                                <th class="" scope="col">Visit Type</th>
+                                <th class=" " scope="col">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="" scope="col">Medical</td>
+                                <td class="" scope="col">Not Completed</td>
+                                <td class="" scope="col">aaa</td>
+                                <td class="" scope="col">05/08/2021</td>
+                                <td class="" scope="col">No</td>
+                                <td class="" scope="col">Admin</td>
+                                <td>
+                                <button type="submit" class="btn btn-primary onhoveredit mr-1">Edit</button>
+                                <button type="submit" class="btn btn-primary onhoveredit">Delete</button>
+                                </td>
+                                
+                            </tr>
+                            <tr>
+                                <td class="" scope="col">Medical</td>
+                                <td class="" scope="col">Not Completed</td>
+                                <td class="" scope="col">aaa</td>
+                                <td class="" scope="col">05/08/2021</td>
+                                <td class="" scope="col">No</td>
+                                <td class="" scope="col">Admin</td>
+                                <td>
+                                <button type="submit" class="btn btn-primary onhoveredit mr-1">Edit</button>
+                                <button type="submit" class="btn btn-primary onhoveredit">Delete</button>
+                                </td>
+                                
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="separator mb-5"></div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <a type="btn" class="btn btn-primary float-left mr-1">Print Visit Reports</a>
+                        <a type="btn" class="btn btn-primary float-right mr-1">Print</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+export class LocationType{
+    typeId:number;
+    name:string;
+    siteNameArabic:string;
+    siteCode:number;
+    facilityId:number;
+    address1:string;
+    geoMapUrl:string;
+    countryId:number;
+    stateId:number;
+    cityId:number;
+    zipCode:string;
+    phone1:string;
+    phone2:string;
+    fax:string;
+    email:string;
+    siteNum:string;
+    placeOfService:string;
+    openingTime:string;
+    closingTime:string;
+    description:string;
+    active:boolean
+}

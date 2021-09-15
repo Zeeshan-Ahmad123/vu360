@@ -1,0 +1,90 @@
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h1 class="facilityheading">Sites</h1>
+          <div class="col-12">
+            <a type="btn" routerLink="/app/Control Panel/Provider/Locations/SiteForm" class="btn btn-primary float-right mb-2">New</a>
+         </div>
+         <div class="card-header">
+          <div class="row rowpaddingtop">
+            <div class="col-2 ">
+              LocationTypes- (Total:{{this.ps.totalitemsCount}})
+            </div>
+  
+            <div class="col-4 add-row add-row-rel top-paging">
+              <span class="cpp">LocationTypes per page:</span>
+              <a (click)="setRecPerPage(this.ps.small)" [ngClass]="this.ps.smallPageRow? 'active':'mr-2'">{{this.ps.small}}</a>
+              <a (click)="setRecPerPage(this.ps.medium)" [ngClass]="this.ps.mediumPageRow? 'active':'mr-2'">{{this.ps.medium}}</a>
+              <a (click)="setRecPerPage(this.ps.large)" [ngClass]="this.ps.largePageRow? 'active':'mr-2'">{{this.ps.large}}</a>
+            </div>
+          </div>
+  
+        </div>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th class="inputlabelclr" scope="col">Site Name</th>
+                <th class="inputlabelclr" scope="col">Facilty Name</th>
+                <th class="inputlabelclr" scope="col">Primary Phone</th>
+                <th class="inputlabelclr" scope="col">Fax</th>
+                <th class="inputlabelclr" scope="col">Email</th>
+                <th class="inputlabelclr" scope="col">Active</th>
+                <th class="inputlabelclr" scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of LocationTypes">
+                <td class="inputlabelclr" scope="col">{{item.name}}</td>
+                <td class="inputlabelclr" scope="col">{{item.facilityName}}</td>
+                <td class="inputlabelclr" scope="col">{{item.phone1}}</td>
+                <td class="inputlabelclr" scope="col">{{item.fax}}</td>
+                <td class="inputlabelclr" scope="col">{{item.email}}</td>
+                <div *ngIf="item.active==true">
+                  <td class="inputlabelclr" scope="col">Yes</td>
+                </div>
+                <div *ngIf="item.active==false">
+                  <td class="inputlabelclr" scope="col">No</td>
+                </div>
+                <td>
+                  <button type="submit" class="btn btn-primary onhoveredit"  (click)="Editbuttonclicked(item.typeId)">Edit</button>
+                </td>
+              </tr>
+
+              
+          <div class="row">
+            <div class="col-3">&nbsp;</div>
+            <div class="col-12">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a (click)="showPrevLocationTypes()" class="prevbtnsetings"
+                    [ngClass]="(this.ps.showNoOfCurrentPage ==1)?'notAllowed':'page-link'">Prev
+                  </a>
+                </li>
+                <li *ngFor="let page of this.ps.pageField;let i=index" class="page-item">
+                  <a class="activebtn" (click)="showLocationTypeByPageNumber(page,i)" [ngClass]="this.ps.pageNumber[i] ? 'pageColor':'page-link'">{{page}}
+                  </a>
+                  &nbsp;
+                </li>
+                <li class="page-item"><a (click)="showNextLocationTypes()" class="nextbtnsetings"
+                    [ngClass]="(this.ps.disabledNextBtn)?'notAllowed':'page-link'">Next
+                  </a>
+                </li>
+              </ul>
+              
+            </div>
+            <div class="col-12">
+              <div style="text-align: center;">
+                Page {{this.ps.currentPage}} of Total page {{this.ps.exactPageList}}
+              </div>
+            </div>
+
+          </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>

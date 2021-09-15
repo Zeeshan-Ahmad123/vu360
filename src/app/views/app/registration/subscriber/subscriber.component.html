@@ -1,0 +1,368 @@
+<div class="row">
+    <div class="col-12">
+        <!-- <app-heading></app-heading> -->
+        <h1>Subscriber</h1>
+        <app-breadcrumb></app-breadcrumb>
+        <div class="separator mb-5"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+            <h1 class="col-12 text-center mb-4">Subscriber Detail
+            </h1>
+
+            <form [formGroup]="Subcriberform" (ngSubmit)="ManageSubscriber()">
+                <div class="row">
+                    <div class="col-12 col-lg-3">
+                        <input type="hidden" formControlName="SubscriberId" />
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    <label class="inputlabelclr" for="">Type</label>
+                                    <label class="w-100">
+                                        <ng-select  appearance="outline" [searchable]="false" placeholder="Select Type">
+                                            <ng-option  formControlName="EntityType" *ngFor="let item of types"[value]="item.label">{{item.label}}
+                                            </ng-option>
+                                        </ng-select>
+
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                
+                                <div class="form-group">
+                                    <label class="inputlabelclr" for="title">Title </label>
+                                    <label class="w-100">
+                                        <ng-select formControlName="Suffix"  name="title" [clearable]="false"  appearance="outline" [clearable]="flase"[searchable]="false" placeholder="Select Title">
+                                            <ng-option *ngFor="let item of titles" id="title" [value]="item.title">{{item.title}}
+                                            </ng-option>
+                                        </ng-select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="First_Name">First Name</label>
+                            <input formControlName="FirstName" type="text" id="First_Name" aria-describedby="First_Name" class="form-control" placeholder="First Name">
+                          </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="Middle_Name">Middle Name</label>
+                            <input formControlName="MiddleName" type="text" id="Middle_Name" aria-describedby="Middle_Name" class="form-control" placeholder="Middle Name">
+                          </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="Last_Name">Last Name</label>
+                            <input formControlName="LastName" type="text" id="Last_Name" aria-describedby="Last_Name" class="form-control" placeholder="Last Name">
+                          </div>
+                          <div *ngIf="Subcriberform.controls['LastName'].invalid && (Subcriberform.controls['LastName'].dirty || Subcriberform.controls['LastName'].touched)" class="text-danger">
+                            <span *ngIf="Subcriberform.controls['LastName'].errors?.required">
+                              Last_Name is required.
+                            </span>
+                          </div> 
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="Cell_Phone">Cell Phone</label>
+                            <input  formControlName="InsuredPhone"  type="text" id="Cell_Phone" aria-describedby="Cell_Phone" class="form-control" placeholder="Cell Phone">
+                          </div>
+                          <div *ngIf="Subcriberform.controls['InsuredPhone'].invalid && (Subcriberform.controls['InsuredPhone'].dirty || Subcriberform.controls['InsuredPhone'].touched)" class="text-danger">
+                            <span *ngIf="Subcriberform.controls['InsuredPhone'].errors?.required">
+                                Cell Phone is required.
+                            </span>
+                          </div> 
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label>Date of Birth</label>
+                            <input  formControlName="BirthDate"  type="text" placeholder="Datepicker" class="form-control" 
+                            bsDatepicker [container]="'html'" [bsConfig]="{ adaptivePosition: true, dateInputFormat: 'DD-MM-YYYY' }">
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="">Gender </label>
+                            <label class="w-100">
+                                <ng-select formControlName="Sex" appearance="outline" [searchable]="false" placeholder="Select Gender">
+                                    <ng-option *ngFor="let item of genders" [value]="item.gender">{{item.gender}}
+                                    </ng-option>
+                                </ng-select>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-12">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="Address">Address</label>
+                            <input formControlName="Address1" type="text" id="Address" aria-describedby="Address" class="form-control" placeholder="Address">
+                          </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                          <label class="inputlabelclr" for="">Country</label>
+                          <label class="w-100">
+                            <ng-select formControlName="CountryId"  appearance="outline" [searchable]="false" placeholder="Select Country" (change)="changeCountry($event)">
+                                <ng-option *ngFor="let item of countries" [value]="item.countryId">{{item.name}}
+                                </ng-option>
+                            </ng-select>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                          <label class="inputlabelclr" for="">State / Emirate</label>
+                          <label class="w-100">
+                            <ng-select formControlName="StateId"  appearance="outline" [searchable]="false" placeholder="Select State" (change)="changeState($event)">
+                                <ng-option *ngFor="let item of states" [value]="item.stateId">{{item.name}}
+                                </ng-option>
+                            </ng-select>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                          <label class="inputlabelclr" for="">City / Location</label>
+                          <label class="w-100">
+                            <ng-select formControlName="CityId" appearance="outline" [searchable]="false" placeholder="Select City">
+                                <ng-option *ngFor="let item of cities" [value]="item.cityId">{{item.name}}
+                                </ng-option>
+                            </ng-select>
+                        </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="Postal_Code">Postal Code / P.O. Box</label>
+                            <input  type="text" id="Postal_Code" aria-describedby="Postal_Code" class="form-control" placeholder="Postal Code">
+                          </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                          <label class="inputlabelclr" for="">Insurance Carrier</label>
+                          <label class="w-100">
+                            <ng-select formControlName="CarrierId" appearance="outline" [searchable]="false" placeholder="Select Insurance Carrier">
+                                <ng-option *ngFor="let item of carrier" [value]="item.payerId">{{item.payerName}}
+                                </ng-option>
+                            </ng-select>
+                            <div *ngIf="Subcriberform.controls['CarrierId'].invalid && (Subcriberform.controls['CarrierId'].dirty || Subcriberform.controls['CarrierId'].touched)" class="text-danger">
+                                <span *ngIf="Subcriberform.controls['CarrierId'].errors?.required">
+                                    Insurance Carrier is required.
+                                </span>
+                              </div> 
+                        </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="form-group">
+                          <label class="inputlabelclr" for="">Policy Name</label>
+                          <label class="w-100">
+                            <ng-select formControlName="InsuredGroupOrPolicyNam"  appearance="outline" [searchable]="false" placeholder="Select Policy Name">
+                                <ng-option *ngFor="let item of policynames" [value]="item.label">{{item.label}}
+                                </ng-option>
+                            </ng-select>
+                            <div *ngIf="Subcriberform.controls['InsuredGroupOrPolicyNam'].invalid && (Subcriberform.controls['InsuredGroupOrPolicyNam'].dirty || Subcriberform.controls['InsuredGroupOrPolicyNam'].touched)" class="text-danger">
+                                <span *ngIf="Subcriberform.controls['InsuredGroupOrPolicyNam'].errors?.required">
+                                    Policy Name is required.
+                                </span>
+                              </div> 
+                        </label>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class="form-group">
+                            <label class="inputlabelclr" for="InsuredIdNo">Insured / Emp. ID No</label>
+                            <input formControlName="InsuredIDNo"  type="text" id="InsuredIdNo" aria-describedby="InsuredIdNo" class="form-control" placeholder="Insured / Emp. ID No">
+                          </div>
+                          <div *ngIf="Subcriberform.controls['InsuredIDNo'].invalid && (Subcriberform.controls['InsuredIDNo'].dirty || Subcriberform.controls['InsuredIDNo'].touched)" class="text-danger">
+                            <span *ngIf="Subcriberform.controls['InsuredIDNo'].errors?.required">
+                                Insured / Emp. ID No is required.
+                            </span>
+                          </div> 
+                    </div>
+                    <div class="col-12 col-lg-3">
+                        <div class=" checkboxalign">
+                            <div class="custom-control custom-checkbox mb-4 checkboxleftpadding mt-3">
+                                <input formControlName="Inactive"  type="checkbox" class="custom-control-input" id="subscribercheckbox">
+                                <label class="custom-control-label topmarginchechbox" for="subscribercheckbox">
+                                  Active
+                                  </label>
+                              </div>
+                          </div>
+                    </div>
+                    <div class="col-lg-6"></div>
+                    <div class="col-12 col-lg-6">
+                        <div class="row">
+                            <div  class="col-lg-12"><label>Deductable (Amount)</label>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                
+                                <div class="form-group">
+                                    <label class="inputlabelclr" for="PC">PC</label>
+                                    <input   type="text" id="PC" aria-describedby="PC" class="form-control" placeholder="0.00">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    <label class="inputlabelclr" for="DN">DN</label>
+                                    <input formControlName="DNDeductible" type="text" id="DN" aria-describedby="DN" class="form-control" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="row">
+                            <div  class="col-lg-12"><label>Copay Flat Rate (%)</label></div>
+                            <div class="col-12 col-lg-6">
+                                
+                                <div class="form-group">
+                                    <label class="inputlabelclr" for="OP">OP</label>
+                                    <input formControlName="OPCopay" type="text" id="OP" aria-describedby="OP" class="form-control" placeholder="0.00">
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <div class="form-group">
+                                    <label class="inputlabelclr" for="IP">IP</label>
+                                    <input formControlName="Deductibles" type="text" id="IP" aria-describedby="IP" class="form-control" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="separator mb-5"></div>
+
+                <div class="row moreinforow">
+                    <div class="col-12 col-lg-12">
+                        <h1 class="text-center">More Info</h1>
+                        <div>
+                            <tabset class="textclr">
+                                <tab  heading="Policy(s)">
+                                    <div class="row morerow">
+                                        <div class="col-12 col-lg-12">
+                                          <table class="table table-hover table-bordered">
+                                              <thead>
+                                                  <tr>
+                                                      <th>Effective Date</th>
+                                                      <th>Termination Date</th>
+                                                      <th>Policy Number</th>
+                                                      <th>No of Visits</th>
+                                                      <th>Amount</th>
+                                                      <th>Status</th>
+                                                      <th>Action</th>
+                                                  </tr>
+                                              </thead>
+                                              <tbody>
+                                                  <tr *ngFor="let field of fieldArrayPolicy; let i = index">
+                                                      <td>
+                                                        <div class="form-group mb-0">
+                                                            <input formControlName="EffectiveDate"  type="text" placeholder="Datepicker" class="form-control" 
+                                                            bsDatepicker [container]="'html'" [bsConfig]="{ adaptivePosition: true, dateInputFormat: 'DD-MM-YYYY' }">
+                                                        </div>
+                                                      </td>
+                                                      <td>
+                                                        <div class="form-group mb-0">
+                                                            <input formControlName="TerminationDate" type="text" placeholder="Datepicker" class="form-control" 
+                                                            bsDatepicker [container]="'html'" [bsConfig]="{ adaptivePosition: true, dateInputFormat: 'DD-MM-YYYY' }">
+                                                        </div>
+                                                      </td>
+                                                      <td>
+                                                        <input formControlName="InsuredGroupOrPolicyNo" class="form-control" type="number" id="newAttributePolicyNo"  name="newAttributePolicyNo" />
+                                                      </td>
+                                                      <td>
+                                                        <input  class="form-control" type="text" id="newAttributeNoVisits"  name="newAttributeNoVisits" />
+                                                      </td>
+                                                      <td>
+                                                        <input class="form-control" type="text" id="newAttributeAmount"  name="newAttributeAmount" />
+                                                      </td>
+                                                      <td>
+                                                        <label class="w-100 mb-0">
+                                                            <ng-select formControlName="EmploymentStatusId"  appearance="outline" [searchable]="false">
+                                                                <ng-option *ngFor="let item of status" id="newAttributeStatus"  name="newAttributeStatus" [value]="item.label">{{item.label}}
+                                                                </ng-option>
+                                                            </ng-select>
+                                                        </label>
+                                                      </td>
+                                                      <td>
+                                                          <button class="btn btn-danger"  type="button" (click)="deleteFieldValuePolicy(i)">Delete</button>
+                                                      </td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td colspan="10">
+                                                          <button class="btn btn-primary" type="button" (click)="addFieldValuePolicy()">Add</button>
+                                                      </td>
+                                                  </tr>
+                                              </tbody>
+                                          </table>
+                                        </div>
+                                    </div>
+                                </tab>
+
+                               <tab  heading="Copay">
+                                  <div class="row morerow">
+                                      <div class="col-12 col-lg-12">
+                                        <table class="table table-hover table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Type of Service</th>
+                                                    <th>Copay(%)</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let field of fieldArrayCopay; let i = index">
+                                                    <td>
+                                                        <label class="w-100">
+                                                            <ng-select appearance="outline" [searchable]="false">
+                                                                <ng-option *ngFor="let item of services" id="fieldArrayCopayServices" name="fieldArrayCopayServices"   [value]="item.value" >{{item.label}}
+                                                                </ng-option>
+                                                            </ng-select>
+                                                        </label>
+                                                    </td>
+                                                    <td>
+                                                        <input formControlName="Copay"  class="form-control" type="text" id="fieldArrayCopayPercent"  name="fieldArrayCopayPercent" />
+
+                                                    </td>
+                                                    <td>
+                                                        <button class="btn btn-danger"  type="button" (click)="deleteFieldValueCopay(i)">Delete</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="10">
+                                                        <button class="btn btn-primary" type="button" (click)="addFieldValueCopay()">Add</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                      </div>
+                                  </div>
+                               </tab>
+                              
+                            </tabset>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12 col-lg-4">
+                        <a type="btn" class="btn btn-primary float-left bottombtns">Copy Patient Info</a>
+                    </div>
+                    <div class="col-12 col-lg-8">
+                        <a type="btn" class="btn btn-primary float-right mr-2 bottombtns">Print</a>
+                        <a type="btn" class="btn btn-primary float-right mr-2 bottombtns">Cancel</a>
+                        <button type="submit" class="btn btn-primary float-right mr-2 bottombtns">Save</button>
+                        <a type="btn" class="btn btn-primary float-right mr-2 bottombtns">Clear</a>
+                    </div>
+                </div>
+            </form>
+            
+        </div>
+      </div>
+    </div>
+</div>

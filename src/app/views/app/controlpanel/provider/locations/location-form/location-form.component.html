@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h1 class="facilityheading">Location</h1>
+         
+          <form [formGroup]="LocationForm" (ngSubmit)="ManageLocation()">
+            <div class="row">
+
+              <input type="hidden" formControlName="LocationId" />
+           
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="">Facility Name</label>
+                  <label class="w-100">
+                    <ng-select appearance="outline" [searchable]="false">
+                        <ng-option *ngFor="let item of facilities" [value]="item.id">{{item.name}}
+                        </ng-option>
+                    </ng-select>
+                </label>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="">Location Type</label>
+                  <label class="w-100">
+                    <ng-select formControlName="LocationType" appearance="outline" [searchable]="false">
+                        <ng-option *ngFor="let item of locationTypes" [value]="item.typeId">{{item.name}}
+                        </ng-option>
+                    </ng-select>
+                </label>
+                <div *ngIf="LocationForm.controls['LocationType'].invalid && (LocationForm.controls['LocationType'].dirty || LocationForm.controls['LocationType'].touched)" class="text-danger">
+                  <span *ngIf="LocationForm.controls['LocationType'].errors?.required">
+                    LocationType is required.
+                  </span>
+                </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="">Site Name</label>
+                  <label class="w-100">
+                    <ng-select formControlName="TypeId" appearance="outline" [searchable]="false">
+                        <ng-option *ngFor="let item of sites" [value]="item.typeId">{{item.name}}
+                        </ng-option>
+                    </ng-select>
+                </label>
+                </div>
+                <div *ngIf="LocationForm.controls['TypeId'].invalid && (LocationForm.controls['TypeId'].dirty || LocationForm.controls['TypeId'].touched)" class="text-danger">
+                  <span *ngIf="LocationForm.controls['TypeId'].errors?.required">
+                    Site Name is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="LocationName">Location Name</label>
+                  <input formControlName="Name" type="text" id="LocationName" aria-describedby="LocationName" class="form-control" placeholder="Location Name">
+                </div>
+                <div *ngIf="LocationForm.controls['Name'].invalid && (LocationForm.controls['Name'].dirty || LocationForm.controls['Name'].touched)" class="text-danger">
+                  <span *ngIf="LocationForm.controls['Name'].errors?.required">
+                    Name is required.
+                  </span>
+                </div>
+              </div>
+      
+              <div class="col-12">
+                <div class="form-group">
+                  <label class="inputlabelclr" for="Description">Description</label>
+                  <textarea formControlName="Description" type="text" id="Description" aria-describedby="Description" rows="5" class="form-control" placeholder="Description"></textarea>
+                </div>
+                <div *ngIf="LocationForm.controls['Description'].invalid && (LocationForm.controls['Description'].dirty || LocationForm.controls['Description'].touched)" class="text-danger">
+                  <span *ngIf="LocationForm.controls['Description'].errors?.required">
+                    Description is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="custom-control custom-checkbox mb-4 checkboxleftpadding">
+                  <input formControlName="Active" type="checkbox" class="custom-control-input" id="customCheckThis1">
+                  <label class="custom-control-label" for="customCheckThis1">
+                    Active
+                    </label>
+                </div>
+                <div *ngIf="LocationForm.controls['Active'].invalid && (LocationForm.controls['Active'].dirty || LocationForm.controls['Active'].touched)" class="text-danger">
+                  <span *ngIf="LocationForm.controls['Active'].errors?.required">
+                    Active is required.
+                  </span>
+                </div>
+              </div>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary float-right" [disabled]="!LocationForm.valid">ADD</button>
+                <a type="btn" routerLink="/app/Control Panel/Provider/Locations/Location" class="btn btn-primary onhoveredit mb-2 float-right mr-2">Cancel</a>
+              </div>
+             
+            
+            </div>
+          </form>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  

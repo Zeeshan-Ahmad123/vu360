@@ -1,0 +1,125 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h1 class="facilityheading">Facility</h1>
+       
+        <form [formGroup]="FacilityForm" (ngSubmit)="ManageFacility()">
+
+
+          <input type="hidden" formControlName="Id" />
+
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label class="inputlabelclr" for="Name">Name</label>
+                <input formControlName="Name" type="text" id="Name" aria-describedby="Name" class="form-control" placeholder="Name">
+                <div *ngIf="FacilityForm.controls['Name'].invalid && (FacilityForm.controls['Name'].dirty || FacilityForm.controls['Name'].touched)" class="text-danger">
+                  <span *ngIf="FacilityForm.controls['Name'].errors?.required">
+                    Name is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="inputlabelclr" for="Araic_Name">Name(Arabic)</label>
+                <input formControlName="FacilityNameArabic" type="text" id="Araic_Name" aria-describedby="Araic_Name" class="form-control" placeholder="Araic_Name">
+                <div *ngIf="FacilityForm.controls['FacilityNameArabic'].invalid && (FacilityForm.controls['FacilityNameArabic'].dirty || FacilityForm.controls['FacilityNameArabic'].touched)" class="text-danger">
+                  <span *ngIf="FacilityForm.controls['FacilityNameArabic'].errors?.required">
+                    FacilityNameArabic is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="inputlabelclr" for="LoginRegCode">Login Reg. Code</label>
+                <input formControlName="LoginRegCode" type="text" id="LoginRegCode" aria-describedby="LoginRegCode" class="form-control" placeholder="LoginRegCode">
+                <div *ngIf="FacilityForm.controls['LoginRegCode'].invalid && (FacilityForm.controls['LoginRegCode'].dirty || FacilityForm.controls['LoginRegCode'].touched)" class="text-danger">
+                  <span *ngIf="FacilityForm.controls['LoginRegCode'].errors?.required">
+                    LoginRegCode is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="inputlabelclr" for="Claim_License_No">Claim License No.</label>
+                <input formControlName="ClaimLicenseNumber" type="text" id="Claim_License_No" aria-describedby="Claim_License_No" class="form-control" placeholder="Claim_License_No">
+                <div *ngIf="FacilityForm.controls['ClaimLicenseNumber'].invalid && (FacilityForm.controls['ClaimLicenseNumber'].dirty || FacilityForm.controls['ClaimLicenseNumber'].touched)" class="text-danger">
+                  <span *ngIf="FacilityForm.controls['ClaimLicenseNumber'].errors?.required">
+                    ClaimLicenseNumber is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="inputlabelclr" for="Code">Code</label>
+                <input formControlName="Code" type="text" id="Code" aria-describedby="Code" class="form-control" placeholder="Code">
+                <div *ngIf="FacilityForm.controls['Code'].invalid && (FacilityForm.controls['Code'].dirty || FacilityForm.controls['Code'].touched)" class="text-danger">
+                  <span *ngIf="FacilityForm.controls['Code'].errors?.required">
+                    Code is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="inputlabelclr" for="Lab_Reference_No_Prefix">Lab Reference No. Prefix</label>
+                <input formControlName="LabReferenceNoPrefix" type="text" id="Lab_Reference_No_Prefix" aria-describedby="Lab_Reference_No_Prefix" class="form-control" placeholder="Lab_Reference_No_Prefix">
+                <div *ngIf="FacilityForm.controls['LabReferenceNoPrefix'].invalid && (FacilityForm.controls['LabReferenceNoPrefix'].dirty || FacilityForm.controls['LabReferenceNoPrefix'].touched)" class="text-danger">
+                  <span *ngIf="FacilityForm.controls['LabReferenceNoPrefix'].errors?.required">
+                    LabReferenceNoPrefix is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label class="inputlabelclr" for="PhoneNo">Phone No.</label>
+                <input formControlName="Phone1" type="text" id="PhoneNo" aria-describedby="PhoneNo" class="form-control" placeholder="PhoneNo">
+                <div *ngIf="FacilityForm.controls['Phone1'].invalid && (FacilityForm.controls['Phone1'].dirty || FacilityForm.controls['Phone1'].touched)" class="text-danger">
+                  <span *ngIf="FacilityForm.controls['Phone1'].errors?.required">
+                    Phone1 is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label class="inputlabelclr" for="GeomapUrl">Geo Map URL</label>
+                <input formControlName="GeoMapUrl" type="text" id="GeomapUrl" aria-describedby="GeomapUrl" class="form-control" placeholder="GeomapUrl">
+                <div *ngIf="FacilityForm.controls['GeoMapUrl'].invalid && (FacilityForm.controls['GeoMapUrl'].dirty || FacilityForm.controls['GeoMapUrl'].touched)" class="text-danger">
+                  <span *ngIf="FacilityForm.controls['GeoMapUrl'].errors?.required">
+                    GeoMapUrl is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group">
+                <label class="inputlabelclr" for="Description">Description</label>
+                <textarea formControlName="Description" type="text" id="Description" aria-describedby="Description" rows="5" class="form-control" placeholder="Description"></textarea>
+                <div *ngIf="FacilityForm.controls['Description'].invalid && (FacilityForm.controls['Description'].dirty || FacilityForm.controls['Description'].touched)" class="text-danger">
+                  <span *ngIf="FacilityForm.controls['Description'].errors?.required">
+                    Description is required.
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary float-right"  >
+                Save
+              </button>
+              <a type="btn" routerLink="/app/Control Panel/Provider/Locations/Facility" class="btn btn-primary onhoveredit mb-2 float-right mr-2">Cancel</a>
+            </div>
+
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>

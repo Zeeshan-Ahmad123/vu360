@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-12">
+        <!-- <app-heading></app-heading> -->
+        <h1>Locations</h1>
+        <app-breadcrumb></app-breadcrumb>
+        <!-- <div class="separator mb-5"></div> -->
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-12">
+        
+
+                <div>
+                    <div class="separator-tabs tab-container" _nghost-eyy-c23>
+                        <ul _ngcontent-eyy-c23 role="tablist" class="nav nav-tabs" aria-label="Tabs">
+                            <li _ngcontent-eyy-c23 class="active nav-item">
+                                <a _ngcontent-eyy-c23=""  routerLink="./Country" role="tab" class="nav-link" (click) = "clickTab(1)" [ngClass]="{'active': step === 1}" aria-controls="" aria-selected="true" id="">
+                                    <span _ngcontent-eyy-c23="">Country</span>
+                                    
+                                </a>
+                            </li>
+                            <li _ngcontent-eyy-c23 class="nav-item">
+                                <a _ngcontent-eyy-c23="" routerLink="./State" role="tab" class="nav-link " (click) = "clickTab(2)" [ngClass]="{'active':step === 2}" aria-controls="" aria-selected="true" id="">
+                                    <span _ngcontent-eyy-c23="">State</span>
+                                    
+                                </a>
+                            </li>
+                            <li _ngcontent-eyy-c23 class="nav-item">
+                                <a _ngcontent-eyy-c23="" routerLink="./City" role="tab" class="nav-link " (click) = "clickTab(3)" [ngClass]="{'active':step === 3}" aria-controls="" aria-selected="true" id="">
+                                    <span _ngcontent-eyy-c23="">City</span>
+                                    
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+          
+       
+    </div>
+</div>
+
+<router-outlet></router-outlet>

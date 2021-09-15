@@ -1,0 +1,154 @@
+<div class="row">
+    <div class="col-12">
+        <h1>Patients Comments</h1>
+        <app-breadcrumb></app-breadcrumb>
+        <div class="separator mb-5"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-12 text-center">
+            </div>
+            <form [formGroup]="DemographicsDetailform" (ngSubmit)="DemographicsDetail()">
+              <div class="row">
+                <div class="col-1">
+                    <label class="lbltext">MR No.</label>
+                </div>
+                <div class="col-5">
+                  <div id="displayOptions" class="collapse dont-collapse-sm in show" aria-expanded="true" aria-hidden="false" style="display: block;">
+                    <div class="d-inline-block ng-star-inserted">
+                        <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
+                            <input formControlName="SearchMRNO" placeholder="Search" class="form-control textclr">
+                        </div>
+                    </div>
+                </div>
+  
+                    
+                </div>
+  
+                <div class="col-12 col-lg-6">
+                  <button type="submit" class="btn btn-primary float-right mr-5 bottombtns" style="margin-top: 0px !important;">OK</button>
+                </div>
+            </div>       
+            </form>
+            
+  
+            <div class="separator mb-5"></div>
+  
+            <div class="form-group row" >
+              <div class="col-12">
+                  <div >
+                    <h2 *ngIf="DemographicsDetails">{{DemographicsDetails?.personFirstName}} {{DemographicsDetails?.personMiddleName}} {{DemographicsDetails?.personLastName}}</h2>
+                  </div>
+              </div>
+              <label for="" class="col-sm-2 col-form-label labelmrsearch">Payer:</label>
+              <div class="col-sm-2">
+                <label for="" class="col-form-label" *ngIf="DemographicsDetails">{{DemographicsDetails?.personHomePhone1}}</label>
+              </div>
+  
+              <label for="" class="col-sm-2 col-form-label labelmrsearch">Gender:</label>
+              <div class="col-sm-2">
+                  <label for="" class="col-form-label" *ngIf="DemographicsDetails">{{DemographicsDetails?.personSex}}</label>
+              </div>
+  
+              <label for="" class="col-sm-2 col-form-label labelmrsearch">Cell Phone:</label>
+              <div class="col-sm-2">
+                <label for="" class="col-form-label" *ngIf="DemographicsDetails">{{DemographicsDetails?.personCellPhone}}</label>
+              </div>
+  
+              <label for="" class="col-sm-2 col-form-label labelmrsearch">Plan:</label>
+              <div class="col-sm-2">
+                <label for="" class="col-form-label" *ngIf="DemographicsDetails">{{DemographicsDetails?.personHomePhone1}}</label>
+              </div>
+  
+              <label for="" class="col-sm-2 col-form-label labelmrsearch">DOB:</label>
+              <div class="col-sm-2">
+                <label for="" class="col-form-label" *ngIf="DemographicsDetails">{{DemographicsDetails?.patientBirthDate | date: 'dd/MM/yyyy'}}</label>
+              </div>
+  
+              <label for="" class="col-sm-2 col-form-label labelmrsearch">Home Phone:</label>
+              <div class="col-sm-2">
+                <label for="" class="col-form-label" *ngIf="DemographicsDetails">{{DemographicsDetails?.personHomePhone1}}</label>
+              </div>
+  
+              <label for="" class="col-sm-2 col-form-label labelmrsearch">Member Id:</label>
+              <div class="col-sm-2">
+                <label for="" class="col-form-label" *ngIf="DemographicsDetails"></label>
+              </div>
+  
+              <label for="" class="col-sm-2 col-form-label labelmrsearch">Age:</label>
+              <div class="col-sm-2">
+                <label for="" class="col-form-label" *ngIf="DemographicsDetails">{{DemographicsDetails?.personHomePhone1}}</label>
+              </div>
+  
+              <label for="" class="col-sm-2 col-form-label labelmrsearch">Work Phone:</label>
+              <div class="col-sm-2">
+                  <label for="" class="col-form-label" *ngIf="DemographicsDetails">{{DemographicsDetails?.personWorkPhone1}}</label>
+              </div>
+  
+          </div>
+          <div class="row mt-4">
+              <div class="col-12 col-lg-12">
+                  <a type="btn" class="btn btn-primary float-right mr-5 bottombtns">Family</a>
+                  <a type="btn" class="btn btn-primary float-right mr-2 bottombtns">Alert</a>
+              </div>
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-12 text-center">
+                <h1 class="mb-3">Patients Comments</h1>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-12" id="print-section">
+                    <p  *ngIf="DisplayDate">{{DisplayDate}}</p><p *ngIf="UserName">{{UserName}}</p>
+                    <br>
+                    <div *ngIf="DisplayContent">
+                      <p>=====================================================</p>
+                      <br>
+                      <p [innerHTML]="DisplayContent"></p>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-12">
+                        <button type="btn" class="btn btn-primary float-right mr-1" (click)="print()">Print</button>
+                    </div>
+                </div>
+        </div>
+      </div>
+    </div>
+</div>
+<form [formGroup]="PatientsCommentsForm" (ngSubmit)="ManagePatientsComments()" accept-charset="UTF-8">
+
+    <div class="row">
+        <div class="col-12 col-lg-12">
+           <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row mt-4">
+                        <div class="col-12 col-lg-12">
+                            <angular-editor formControlName="Comments"  rows="10" [config]="editorConfig" placeholder="Enter Message Here..."></angular-editor>
+                        </div>
+                    </div>
+                    <div class="separator mb-5"></div>
+                    <div class="row">
+                        <div class="col-12 col-lg-12">
+                            <a type="btn" class="btn btn-primary float-right mr-1">Cancel</a>
+                            <a type="btn" class="btn btn-primary float-right mr-1">Save and Print</a>
+                            <button type="submit" class="btn btn-primary float-right mr-1">Add</button>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>            
+</form>

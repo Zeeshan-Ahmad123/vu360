@@ -1,0 +1,59 @@
+<div class="card auth-card">
+  <div class="position-relative image-side ">
+    
+    <p class="white mb-0 lefttext">
+      Please use your credentials to login.
+      <br>If you are not a member, please
+      <a routerLink="/user/register" class="white white-underline-link">register</a>.
+    </p>
+  </div>
+  <div class="form-side">
+    <div class="row">
+      <div class="col-12 text-center">
+        <a class="c-pointer">
+          <span class="logo-single"></span>
+        </a>
+      </div>
+      <div class="col-12 text-center">
+        <h1 class="mb-4 text-center">Login</h1>
+      </div>
+    </div>
+    
+    
+
+    <form [formGroup]="LoginForm" (ngSubmit)="onSubmit()">
+      <label class="form-group has-float-label">
+        <input class="form-control logininput" required formControlName="UserName" placeholder="User Name"/>
+        <div *ngIf="LoginForm.controls['UserName'].invalid && (LoginForm.controls['UserName'].dirty || LoginForm.controls['UserName'].touched)" class="text-danger">
+          <span *ngIf="LoginForm.controls['UserName'].errors?.required">
+            UserName is required.
+          </span>
+        </div>
+      </label>
+      <label class="form-group has-float-label">
+        <input class="form-control logininput" type="password" required formControlName="Password" placeholder="Password"/>
+        <div *ngIf="LoginForm.controls['Password'].invalid && (LoginForm.controls['Password'].dirty || LoginForm.controls['Password'].touched)" class="text-danger">
+          <span *ngIf="LoginForm.controls['Password'].errors?.required">
+            Password is required.
+          </span>
+        </div>
+      </label>
+      <label class="form-group has-float-label">
+        <input class="form-control logininput" type="text" formControlName="LoginRegCode" placeholder="Login Reg. Code"/>
+        <div *ngIf="LoginForm.controls['LoginRegCode'].invalid && (LoginForm.controls['LoginRegCode'].dirty || LoginForm.controls['LoginRegCode'].touched)" class="text-danger">
+          <span *ngIf="LoginForm.controls['LoginRegCode'].errors?.required">
+            LoginRegCode is required.
+          </span>
+        </div>
+      </label>
+      <div class="d-flex justify-content-between align-items-center">
+        <app-state-button [btnClass]="'btn btn-primary btn-lg btn-shadow'" [currentState]="buttonState"
+          [isDisabled]="buttonDisabled">
+          {{ 'user.login-button' | translate | uppercase }}
+        </app-state-button>
+      </div>
+    </form>
+
+  </div>
+</div>
+<simple-notifications></simple-notifications>
